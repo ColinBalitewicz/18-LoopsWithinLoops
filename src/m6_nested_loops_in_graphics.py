@@ -3,8 +3,8 @@ This project demonstrates NESTED LOOPS (i.e., loops within loops)
 in the context of TWO-DIMENSIONAL GRAPHICS.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Colin Balitewicz.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -55,6 +55,20 @@ def run_test_draw_L():
 
 
 def draw_L(window, circle, r, c):
+    for j in range(r):
+        for k in range(3):
+            circle_2=rg.Circle(rg.Point(circle.center.x+circle.radius*2*k,circle.center.y),circle.radius)
+            circle_2.fill_color=circle.fill_color
+            circle_2.attach_to(window)
+            window.render()
+        circle.center.y=circle.center.y+2*circle.radius
+    for j in range(3):
+        for k in range(c+3):
+            circle_3=rg.Circle(rg.Point(circle.center.x+circle.radius*2*k,circle.center.y),circle.radius)
+            circle_3.fill_color=circle.fill_color
+            circle_3.attach_to(window)
+            window.render()
+        circle.center.y=circle.center.y+2*circle.radius
     """
     See   L.pdf   in this project for pictures that may
     help you better understand the following specification:
@@ -80,7 +94,7 @@ def draw_L(window, circle, r, c):
     and m and n are small, positive integers.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
@@ -103,6 +117,15 @@ def run_test_draw_wall_on_right():
 
 
 def draw_wall_on_right(rectangle, n, window):
+    height=rectangle.get_height()
+    width=rectangle.get_width()
+    for j in range(n):
+        for k in range(j):
+            rectangle_2=rg.Rectangle(rg.Point(rectangle.corner_1.x-width*k,rectangle.corner_1.y),rg.Point(rectangle.corner_2.x-width*k,rectangle.corner_2.y))
+            rectangle_2.attach_to(window)
+            window.render()
+    rectangle.corner_1.y=rectangle.corner_1.y+height
+    rectangle.corner_2.y=rectangle.corner_2.y+height
     """
     See   Walls.pdf   in this project for pictures that may
     help you better understand the following specification:
@@ -121,7 +144,7 @@ def draw_wall_on_right(rectangle, n, window):
     and n is a small, positive integer.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
