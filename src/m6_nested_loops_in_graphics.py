@@ -119,13 +119,14 @@ def run_test_draw_wall_on_right():
 def draw_wall_on_right(rectangle, n, window):
     height=rectangle.get_height()
     width=rectangle.get_width()
-    for j in range(n):
+    for j in range(n+1):
         for k in range(j):
             rectangle_2=rg.Rectangle(rg.Point(rectangle.corner_1.x-width*k,rectangle.corner_1.y),rg.Point(rectangle.corner_2.x-width*k,rectangle.corner_2.y))
             rectangle_2.attach_to(window)
             window.render()
-    rectangle.corner_1.y=rectangle.corner_1.y+height
-    rectangle.corner_2.y=rectangle.corner_2.y+height
+        rectangle.corner_1.y=rectangle.corner_1.y+height
+        rectangle.corner_2.y=rectangle.corner_2.y+height
+
     """
     See   Walls.pdf   in this project for pictures that may
     help you better understand the following specification:
